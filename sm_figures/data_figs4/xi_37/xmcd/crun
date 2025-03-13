@@ -1,0 +1,7 @@
+sed -i 's/40T\/XAS.dat\/xas_tot_mcd_combine_tot.dat/xas_tot_mcd_combine_40T.dat/g' gnu_paper_fig_s4_xmcd
+sed -i 's/20T\/XAS.dat\/xas_tot_mcd_combine_tot.dat/xas_tot_mcd_combine_20T.dat/g' gnu_paper_fig_s4_xmcd
+sed -i 's/10T\/XAS.dat\/xas_tot_mcd_combine_tot.dat/xas_tot_mcd_combine_10T.dat/g' gnu_paper_fig_s4_xmcd
+sed -i 's/5T\/XAS.dat\/xas_tot_mcd_combine_tot.dat/xas_tot_mcd_combine_5T.dat/g' gnu_paper_fig_s4_xmcd
+sed -i 's/1T\/XAS.dat\/xas_tot_mcd_combine_tot.dat/xas_tot_mcd_combine_1T.dat/g' gnu_paper_fig_s4_xmcd
+sed -i 's/0.3T\/XAS.dat\/xas_tot_mcd_combine_tot.dat/xas_tot_mcd_combine_0.3T.dat/g' gnu_paper_fig_s4_xmcd
+sed -i 's/\.\.\/\.\.\/\.\.\/soc__0.00\/0T\/xas_tot_mcd.dat/xas_tot_mcd_nosoc.dat/g' gnu_paper_fig_s4_xmcd

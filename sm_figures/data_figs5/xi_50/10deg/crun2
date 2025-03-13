@@ -1,0 +1,13 @@
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__a_axis/0.3T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_0.3T_a.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__a_axis/1T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_1T_a.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__a_axis/5T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_5T_a.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__a_axis/10T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_10T_a.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__a_axis/20T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_20T_a.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__a_axis/40T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_40T_a.dat
+
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__b_axis/0.3T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_0.3T_b.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__b_axis/1T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_1T_b.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__b_axis/5T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_5T_b.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__b_axis/10T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_10T_b.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__b_axis/20T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_20T_b.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.049706/for_amp/B__10deg/k__b_axis/40T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_40T_b.dat

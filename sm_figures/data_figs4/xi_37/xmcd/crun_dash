@@ -1,0 +1,6 @@
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.037195/for_amp/B__0deg/40T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_40T.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.037195/for_amp/B__0deg/20T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_20T.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.037195/for_amp/B__0deg/10T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_10T.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.037195/for_amp/B__0deg/5T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_5T.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.037195/for_amp/B__0deg/1T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_1T.dat
+cp ~/../sakurai/spec_workdir/NiF2/CF_inp_updated/ALL_change/MFA/B_ext_act_on_orbit/soc__0.037195/for_amp/B__0deg/0.3T/XAS.dat/xas_tot_mcd_combine_tot.dat ./xas_tot_mcd_combine_0.3T.dat

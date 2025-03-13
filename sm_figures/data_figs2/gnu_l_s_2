@@ -1,0 +1,45 @@
+set terminal wxt size 800,600
+set colors classic
+set key font "Arial,23" at graph 0.50, 0.95 spacing 1.3
+set key nobox
+
+set border linewidth 3.0
+set style circle radius 0.45
+set style fill solid
+
+set origin 0.03, 0.02
+set size 0.95, 0.98
+
+set xlabel  "Magnetic Field B (T)"      offset  0.0,-0.8 font 'Arial, 23'
+set ylabel  "FM Moment ({/Symbol m}_B/atom)" offset -3.0, 0.0 font 'Arial, 23'
+set y2label "m_l / m_s"                 offset  3.5, 0.0 font 'Arial, 23'
+set xrange [0:40]  # 磁場の範囲を0Tから40Tに設定
+set yrange [0.0:0.6]
+set y2range [0.0 :1.2]
+set xtics 10   offset 0.0, 0.0 font 'Arial,20'
+set mxtics 10
+set ytics 0.1 nomirror  offset 0.0, 0.0 font 'Arial,20'
+set mytics 2
+set y2tics 0.5 offset 0.0, 0.0 font 'Arial,20'
+set my2tics 5
+
+# 主目盛りグリッド線のスタイル設定
+set style line 1 lt 1 lw 2 lc rgb "black"
+set grid xtics ytics ls 1
+
+# 補助目盛りグリッド線のスタイル設定
+set style line 2 lt 0 lw 2 lc rgb "gray"
+set grid mxtics mytics ls 2
+
+g=2
+
+# 1行目を磁場（X軸）、2行目と3行目をY軸としてプロット
+plot "l_s_vs_B.dat" u ($1):(-($2)/2) w lines lw 3.5  lc "red" title "m_l", \
+     "l_s_vs_B.dat" u ($1):(-($2)/2) w circles lc "red" notitle, \
+     "l_s_vs_B.dat" u ($1):(-g*($3)/2) w lines lw 3.5 lc "blue" title "m_s", \
+     "l_s_vs_B.dat" u ($1):(-g*($3)/2) w circles lc "blue" notitle, \
+     "l_s_vs_B.dat" u ($1):(-($2)/2-g*($3)/2) w lines lw 3.5 lc "black" title "m", \
+     "l_s_vs_B.dat" u ($1):(-($2)/2-g*($3)/2) w circles lc "black" notitle, \
+     "l_s_vs_B.dat" u ($1):(($2)/(g*($3))) axis x1y2 w lines lw 3.5 lc "forest-green" title "{m_l} / {m_s}", \
+     "l_s_vs_B.dat" u ($1):(($2)/(g*($3))) axis x1y2 w circles lc "forest-green" notitle, \
+     

@@ -1,0 +1,279 @@
+#--------------------------------------
+set terminal wxt font "Arial,24" size 1900,600 enhanced
+set colors classic
+
+set multiplot layout 1,4
+set rmargin 0 ; set lmargin 0 ; set tmargin 0 ; set bmargin 0
+
+#set nokey
+
+unset border
+
+set border linewidth 3.0
+
+set style circle radius 1.25
+set style fill solid
+
+set xrange[845.1:874.9]
+set xtics  10 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.45:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+set format y "%2.1f"
+#---------------------------------
+h1 = 0.040
+h2 = 0.080
+h3 = 0.120
+h4 = 0.160
+h5 = 0.200
+#---------------------------------
+# fixed
+p = 855.75 
+a = 1   
+m = 0.03988931/2+0.01619133 #FM for 0.3T
+n = 0.09730072/2+0.22611719 #FM for 20T
+r = 1
+#---------------------------------
+# parameters (FM)
+f1 = 0.03988931/2+0.01619133 #FM for 0.3T
+f2 = 0.04193992/2+0.02366404 #FM for 1T
+f3 = 0.05363688/2+0.06634783 #FM for 5T
+f4 = 0.06822590/2+0.11965802 #FM for 10T
+f5 = 0.09730072/2+0.22611719 #FM for 20T
+f6 = 0.15501478/2+0.43838216 #FM for 40T
+#---------------------------------
+
+#---------------------------------
+# panel (a)
+#--------------------------------
+set size   0.12, 0.80
+set origin 0.08, 0.15
+set border 7
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set xlabel 'Energy (eV)'     offset 8.0, 0.7 font 'Arial,24'
+set ylabel 'XMCD intensity (arb. unit)' offset 0.5,-0.0 font 'Arial,24'
+
+plot "xas_tot_mcd_combine_40T.dat" u ($1+p):($3*a-h5)  w l lw 3.5  lc  "brown" notitle "40T",\
+     "xas_tot_mcd_combine_20T.dat" u ($1+p):($3*a-h4)  w l lw 3.5  lc  4 notitle "20T",\
+     "xas_tot_mcd_combine_10T.dat" u ($1+p):($3*a-h3)  w l lw 3.5  lc  5 notitle "10T",\
+     "xas_tot_mcd_combine_5T.dat" u ($1+p):($3*a-h2)  w l lw 3.5  lc  "orange" notitle "5T",\
+     "xas_tot_mcd_combine_1T.dat" u ($1+p):($3*a-h1)  w l lw 3.5  lc  1 notitle "1T",\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1+p):($3*a)  w l lw 3.5  lc  2 notitle "0.3T"
+#---------------------------------
+set size   0.12, 0.80
+set origin 0.21, 0.15
+set border 13
+
+set key font "Arial,24" at graph 0.95,0.4 maxrow 3 spacing 1.3 samplen 1.5
+set key nobox
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set noytics
+
+unset label; unset xlabel; unset ylabel
+set format y ""
+
+plot "xas_tot_mcd_combine_40T.dat" u ($1+p):($3*a-h5)  w l lw 3.5  lc  "brown" title "40T",\
+     "xas_tot_mcd_combine_20T.dat" u ($1+p):($3*a-h4)  w l lw 3.5  lc  4 title "20T",\
+     "xas_tot_mcd_combine_10T.dat" u ($1+p):($3*a-h3)  w l lw 3.5  lc  5 title "10T",\
+     "xas_tot_mcd_combine_5T.dat" u ($1+p):($3*a-h2)  w l lw 3.5  lc  "orange" title "5T",\
+     "xas_tot_mcd_combine_1T.dat" u ($1+p):($3*a-h1)  w l lw 3.5  lc  1 title "1T",\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1+p):($3*a)  w l lw 3.5  lc  2 title "0.3T"
+#---------------------------------
+
+#---------------------------------
+# panel (b)
+#---------------------------------
+set size   0.12, 0.80
+set origin 0.35, 0.15
+set border 7
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.45:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+set format y ""
+
+unset label; unset xlabel; unset ylabel
+set xlabel 'Energy (eV)'     offset 8.0, 0.7 font 'Arial,24'
+
+plot "xas_tot_mcd_combine_40T.dat" u ($1+p):($6*a+f6*($9*a-$12*a)/(m-n)-h5)  w l lw 3.5  lc  "brown" notitle,\
+     "xas_tot_mcd_combine_20T.dat" u ($1+p):($6*a+f5*($9*a-$12*a)/(m-n)-h4)  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T.dat" u ($1+p):($6*a+f4*($9*a-$12*a)/(m-n)-h3)  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T.dat" u ($1+p):($6*a+f3*($9*a-$12*a)/(m-n)-h2)  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T.dat" u ($1+p):($6*a+f2*($9*a-$12*a)/(m-n)-h1)  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1+p):($6*a+f1*($9*a-$12*a)/(m-n))  w l lw 3.5  lc  2 notitle
+#---------------------------------
+set size   0.12, 0.80
+set origin 0.48, 0.15
+set border 13
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+unset label; unset xlabel; unset ylabel
+set noytics
+
+plot "xas_tot_mcd_combine_40T.dat" u ($1+p):($6*a+f6*($9*a-$12*a)/(m-n)-h5)  w l lw 3.5  lc  "brown" notitle,\
+     "xas_tot_mcd_combine_20T.dat" u ($1+p):($6*a+f5*($9*a-$12*a)/(m-n)-h4)  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T.dat" u ($1+p):($6*a+f4*($9*a-$12*a)/(m-n)-h3)  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T.dat" u ($1+p):($6*a+f3*($9*a-$12*a)/(m-n)-h2)  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T.dat" u ($1+p):($6*a+f2*($9*a-$12*a)/(m-n)-h1)  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1+p):($6*a+f1*($9*a-$12*a)/(m-n))  w l lw 3.5  lc  2 notitle
+#---------------------------------
+
+#---------------------------------
+# panel (c)
+#---------------------------------
+set size   0.12, 0.80
+set origin 0.67, 0.15
+
+set key nobox
+
+set border 1+4 lc "black" 
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.025:0.0125]
+set noytics  
+
+set y2tics
+set y2range [-0.25:0.125]
+set noy2tics
+set format y2 ""
+
+unset label; unset xlabel; unset ylabel
+set xlabel 'Energy (eV)'     offset 8.0, 0.7 font 'Arial,24'
+
+plot "xas_tot_mcd_combine_0.3T.dat" u ($1+p):(($6*a))/2 axis x1y1  w l lw 3.5  lc  "blue" notitle "ALT",\
+     "xas_tot_mcd_nosoc.dat" u ($1+p):(($3*a))/2 axis x1y1  w l lw 2  lc  "black" notitle "ALT (no SOC)",\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1+p):(($9*a-$12*a)/(m-n))/2 axis x1y2  w l lw 3.5  lc  "red" notitle "FM",\
+
+set size   0.12, 0.80
+set origin 0.67, 0.15
+set border 2 lc "blue"
+unset xlabel
+unset xtics
+unset ylabel
+unset ytics
+
+set xrange[846.0:856.0]
+set noxtics
+
+set yrange [-0.025:0.0125]
+set ytics  0.010 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 4
+set format y "%2.2f"
+
+plot "xas_tot_mcd_combine_0.3T.dat" u ($1):(($6*a))/2 axis x1y1  w l lw 3.5  lc  "blue" notitle "ALT",\
+     "xas_tot_mcd_nosoc.dat" u ($1):(($3*a))/2 axis x1y1  w l lw 2  lc  "black" notitle "ALT (no SOC)",\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1):(($9*a-$12*a)/(m-n))/2 axis x1y2  w l lw 3.5  lc  "red" notitle "FM",\
+
+#--------------------------------------
+set size   0.12, 0.80
+set origin 0.80, 0.15
+
+set key font "Arial,25" at graph 0.95,0.40 maxrow 6 spacing 1.3 samplen 3.0
+set key nobox
+
+set border 1+4 lc "black"
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+set yrange [-0.025:0.0125]
+set noytics
+set format y ""
+
+set y2tics
+set y2range [-0.3:0.15]
+set noy2tics
+
+plot "xas_tot_mcd_combine_0.3T.dat" u ($1+p):(($6*a))/2 axis x1y1  w l lw 3.5  lc  "blue" title "ALT",\
+     "xas_tot_mcd_nosoc.dat" u ($1+p):(($3*a))/2 axis x1y1  w l lw 2  lc  "black" title "ALT (no SOC)",\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1+p):(($9*a-$12*a)/(m-n))/2 axis x1y2  w l lw 3.5  lc  "red" title "FM",\
+
+unset label; unset xlabel; unset ylabel
+#set xlabel 'Energy (eV)'     offset 0.0, 0.7 font 'Arial,24'
+
+
+set size   0.12, 0.80
+set origin 0.80, 0.15
+set border 8 lc "red"
+unset xlabel
+unset xtics
+unset ylabel
+unset ytics
+
+set xrange[864.0:874.0]
+set noxtics
+set yrange [-0.25:0.125]
+set noytics
+
+set y2tics
+set y2range [-0.25:0.125]
+set y2tics 0.10 nomirror
+set my2tics 4
+set format y2 "%2.1f"
+
+set y2label '{/Symbol D}_{FM} ({/Symbol m}_B^{-1})' offset -1.0,-0.0 font 'Arial,24' tc "red"
+
+plot "xas_tot_mcd_combine_0.3T.dat" u ($1):(($6*a))/2 axis x1y1  w l lw 3.5  lc  "blue" notitle "ALT",\
+     "xas_tot_mcd_nosoc.dat" u ($1):(($3*a))/2 axis x1y1  w l lw 2  lc  "black" notitle "ALT (no SOC)",\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1):(($9*a-$12*a)/(m-n))/2 axis x1y2  w l lw 3.5  lc  "red" notitle "FM",\
+
+unset y2tics; unset y2label
+     
+#--------------------------------------
+# Inset
+#--------------------------------------
+set size   0.075, 0.25
+set origin 0.51, 0.25
+
+set xrange[848:856]
+set xtics  4 offset 0.0,0.4 font 'Arial,16'
+set mxtics 2
+set format x "%2.0f"
+
+set yrange [-0.0007:0.0003]
+set ytics  0.0005 offset 0.3, 0.0 font 'Arial,16'
+set mytics 5
+unset format y "%2.2f"
+set format y "%.0t×10^{%T}" # Y軸のティックラベルを10の累乗形式に設定
+
+unset y2tics
+
+set border
+set border linewidth 3.0
+unset label; unset xlabel;
+
+set ylabel 'diff.' offset 4.8,-0.0 font 'Arial,23'
+
+plot "xas_tot_mcd_combine_40T.dat" u ($1+p):(($6*a+f6*($9*a-$12*a)/(m-n))-($3*a))*r  w l lw 3.5  lc  "brown" notitle,\
+     "xas_tot_mcd_combine_20T.dat" u ($1+p):(($6*a+f5*($9*a-$12*a)/(m-n))-($3*a))*r  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T.dat" u ($1+p):(($6*a+f4*($9*a-$12*a)/(m-n))-($3*a))*r  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T.dat" u ($1+p):(($6*a+f3*($9*a-$12*a)/(m-n))-($3*a))*r  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T.dat" u ($1+p):(($6*a+f2*($9*a-$12*a)/(m-n))-($3*a))*r  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T.dat" u ($1+p):(($6*a+f1*($9*a-$12*a)/(m-n))-($3*a))*r  w l lw 3.5  lc  2 notitle
+#---------------------------------
+unset multiplot

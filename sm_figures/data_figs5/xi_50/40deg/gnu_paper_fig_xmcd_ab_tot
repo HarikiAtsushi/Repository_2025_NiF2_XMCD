@@ -1,0 +1,444 @@
+#--------------------------------------
+set terminal wxt font "Arial,24" size 2000,1100 enhanced
+set colors classic
+
+set multiplot layout 1,4
+set rmargin 0 ; set lmargin 0 ; set tmargin 0 ; set bmargin 0
+
+set key font "Arial,20" at graph 1.05,0.34 maxrow 3 spacing 1.2 samplen 1.2
+set key nobox
+#set nokey
+
+set border linewidth 3.0
+
+set style circle radius 1.25
+set style fill solid
+
+set yrange [-0.60:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+
+#----------------------------------
+# fixed
+p = 855.75 
+a = 1
+m = 0.05353576 #FM for 0.3T
+n = 0.30388975 #FM for 20T
+r = 1
+rad = pi/180
+factor1 = 2 # for scale below panels
+factor2 = 2 # for scale below panels
+factor3 = 2 # for scale below panels
+factor4 = 2 # for scale below panels
+factor5 = 2 # for scale below panels
+#-----------------------------------
+#offset
+h1 = 0.05
+h2 = 0.1
+h3 = 0.15
+h4 = 0.2
+h5 = 0.25
+#-----------------------------------
+# parameters (phi_L)
+phi1 = 90.07754013*rad #Neel angle for 0.3T
+phi2 = 91.51037296*rad #Neel angle for 1T
+phi3 = 100.3367743*rad #Neel angle for 5T
+phi4 = 107.7826635*rad #Neel angle for 10T
+phi5 = 115.7592789*rad #Neel angle for 20T
+phi6 = 121.9862832*rad #Neel angle for 40T
+
+#####################################################################################################################
+
+# a-axis
+
+#---------------------------------
+# parameters (FM_a)
+
+f1 = 0.05440267/2+0.02544029 #FM for 0.3T
+f2 = 0.05634439/2+0.03145211 #FM for 1T
+f3 = 0.06725010/2+0.06792114 #FM for 5T
+f4 = 0.08046804/2+0.11428260 #FM for 10T
+f5 = 0.10663312/2+0.20380373 #FM for 20T
+f6 = 0.15928217/2+0.37514843 #FM for 40T
+#---------------------------------
+
+#---------------------------------
+# panel (a)
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.09, 0.57
+set border 7
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+
+set format x ""
+set format y "%2.1f"
+
+unset label; unset xlabel; unset ylabel
+set ylabel 'k||[100] (arb. units)' offset 0.5,0.0 font 'Arial,24
+
+plot "xas_tot_mcd_combine_40T_a.dat" u ($1+p):($3-h5)  w l lw 3.5  lc  "brown" notitle "40T",\
+     "xas_tot_mcd_combine_20T_a.dat" u ($1+p):($3-h4)  w l lw 3.5  lc  4 notitle "20T",\
+     "xas_tot_mcd_combine_10T_a.dat" u ($1+p):($3-h3)  w l lw 3.5  lc  5 notitle "10T",\
+     "xas_tot_mcd_combine_5T_a.dat" u ($1+p):($3-h2)  w l lw 3.5  lc  "orange" notitle "5T",\
+     "xas_tot_mcd_combine_1T_a.dat" u ($1+p):($3-h1)  w l lw 3.5  lc  1 notitle "1T",\
+     "xas_tot_mcd_combine_0.3T_a.dat" u ($1+p):($3)  w l lw 3.5  lc  2 notitle "0.3T"
+
+unset ytics; set format y ""
+unset xlabel; unset ylabel
+#-----------------------------------
+set size   0.10, 0.40
+set origin 0.20, 0.57
+set border 13
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set format x ""
+set format y ""
+
+plot "xas_tot_mcd_combine_40T_a.dat" u ($1+p):($3-h5)  w l lw 3.5  lc  "brown" notitle "40T",\
+     "xas_tot_mcd_combine_20T_a.dat" u ($1+p):($3-h4)  w l lw 3.5  lc  4 notitle "20T",\
+     "xas_tot_mcd_combine_10T_a.dat" u ($1+p):($3-h3)  w l lw 3.5  lc  5 notitle "10T",\
+     "xas_tot_mcd_combine_5T_a.dat" u ($1+p):($3-h2)  w l lw 3.5  lc  "orange" notitle "5T",\
+     "xas_tot_mcd_combine_1T_a.dat" u ($1+p):($3-h1)  w l lw 3.5  lc  1 notitle "1T",\
+     "xas_tot_mcd_combine_0.3T_a.dat" u ($1+p):($3)  w l lw 3.5  lc  2 notitle "0.3T"
+
+#---------------------------------
+# panel (b)
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.30, 0.57
+set border 7
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x ""
+
+#unset label; unset xlabel;  unset ylabel
+
+#set yrange [-0.0534:-0.0530]
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+
+set format y ""
+
+plot "xas_tot_mcd_combine_0.3T_a.dat" u ($1+p):($6*sin(phi1)*a)  w l lw 3.5  lc  2 notitle,\
+     "xas_tot_mcd_combine_1T_a.dat" u ($1+p):($6*sin(phi2)*a-h1)  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_5T_a.dat" u ($1+p):($6*sin(phi3)*a-h2)  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_10T_a.dat" u ($1+p):($6*sin(phi4)*a-h3)  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_20T_a.dat" u ($1+p):($6*sin(phi5)*a-h4)  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_40T_a.dat" u ($1+p):($6*sin(phi6)*a-h5)  w l lw 3.5  lc  "brown" notitle,\
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.41, 0.57
+set border 13
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x ""
+
+#unset label; unset xlabel;  unset ylabel
+
+#set yrange [-0.0534:-0.0530]
+set noytics 
+
+plot "xas_tot_mcd_combine_0.3T_a.dat" u ($1+p):($6*sin(phi1)*a)  w l lw 3.5  lc  2 notitle,\
+     "xas_tot_mcd_combine_1T_a.dat" u ($1+p):($6*sin(phi2)*a-h1)  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_5T_a.dat" u ($1+p):($6*sin(phi3)*a-h2)  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_10T_a.dat" u ($1+p):($6*sin(phi4)*a-h3)  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_20T_a.dat" u ($1+p):($6*sin(phi5)*a-h4)  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_40T_a.dat" u ($1+p):($6*sin(phi6)*a-h5)  w l lw 3.5  lc  "brown" notitle,\
+
+#---------------------------------
+# panel (c)
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.51, 0.57
+set border 7
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x ""
+
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+
+unset label; unset xlabel; unset ylabel
+
+plot "xas_tot_mcd_combine_40T_a.dat" u ($1+p):(f6*($9*a-$12*a)/(m-n)-h5)  w l lw 3.5  lc "brown" notitle,\
+     "xas_tot_mcd_combine_20T_a.dat" u ($1+p):(f5*($9*a-$12*a)/(m-n)-h4)  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_a.dat" u ($1+p):(f4*($9*a-$12*a)/(m-n)-h3)  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_a.dat" u ($1+p):(f3*($9*a-$12*a)/(m-n)-h2)  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_a.dat" u ($1+p):(f2*($9*a-$12*a)/(m-n)-h1)  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_a.dat" u ($1+p):(f1*($9*a-$12*a)/(m-n))  w l lw 3.5  lc  2 notitle     
+#------------------------------------
+set size   0.10, 0.40
+set origin 0.62, 0.57
+set border 13
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x ""
+
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+set noytics
+
+unset label; unset xlabel; unset ylabel
+
+plot "xas_tot_mcd_combine_40T_a.dat" u ($1+p):(f6*($9*a-$12*a)/(m-n)-h5)  w l lw 3.5  lc "brown" notitle,\
+     "xas_tot_mcd_combine_20T_a.dat" u ($1+p):(f5*($9*a-$12*a)/(m-n)-h4)  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_a.dat" u ($1+p):(f4*($9*a-$12*a)/(m-n)-h3)  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_a.dat" u ($1+p):(f3*($9*a-$12*a)/(m-n)-h2)  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_a.dat" u ($1+p):(f2*($9*a-$12*a)/(m-n)-h1)  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_a.dat" u ($1+p):(f1*($9*a-$12*a)/(m-n))  w l lw 3.5  lc  2 notitle
+
+#--------------------------------
+# panel (d)
+#--------------------------------
+set size   0.12, 0.40
+set origin 0.80, 0.57
+set border
+set border linewidth 3.0
+
+set xrange[848:855]
+set xtics  4 offset 0.0,0.5 font 'Arial,16'
+set mxtics 4
+set format x ""
+
+set yrange [-0.0012:0.0005]
+set ytics  0.0005 offset 0.5, 0.0 font 'Arial,24'
+set mytics 5
+
+set format y "%.0t×10^{%T}" # Y軸のティックラベルを10の累乗形式に設定
+
+unset label; unset xlabel; unset ylabel
+
+#set ylabel 'diff.' offset 5.0,-0.0 font 'Arial,24'
+
+plot "xas_tot_mcd_combine_40T_a.dat" u ($1+p):(($6*a*sin(phi6)+f6*($9*a-$12*a)/(m-n))-($3))*r  w l lw 3.5  lc  "brown" notitle,\
+     "xas_tot_mcd_combine_20T_a.dat" u ($1+p):(($6*a*sin(phi5)+f5*($9*a-$12*a)/(m-n))-($3))*r  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_a.dat" u ($1+p):(($6*a*sin(phi4)+f4*($9*a-$12*a)/(m-n))-($3))*r  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_a.dat" u ($1+p):(($6*a*sin(phi3)+f3*($9*a-$12*a)/(m-n))-($3))*r  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_a.dat" u ($1+p):(($6*a*sin(phi2)+f2*($9*a-$12*a)/(m-n))-($3))*r  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_a.dat" u ($1+p):(($6*a*sin(phi1)+f1*($9*a-$12*a)/(m-n))-($3))*r  w l lw 3.5  lc  2 notitle
+
+#####################################################################################################################
+
+#  b-axis
+
+#---------------------------------
+# parameters (FM_b)
+f1 = 0.00015061/2+0.00003536 #FM for 0.3T
+f2 = -0.00039244/2+0.00081600 #FM for 1T
+f3 = -0.00237022/2+0.01229729 #FM for 5T
+f4 = 0.00061023/2+0.03655318 #FM for 10T
+f5 = 0.01565110/2+0.09847593 #FM for 20T
+f6 = 0.05698503/2+0.23574092 #FM for 40T
+#---------------------------------
+
+#---------------------------------
+# panel (a)
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.09, 0.17
+set border 7
+
+set format x "%2.0f"
+set format y "%2.1f"
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+
+unset label; unset xlabel; unset ylabel
+set ylabel 'XMCD for k||[010]' offset 0.5,0.0 font 'Arial,24'
+
+plot "xas_tot_mcd_combine_40T_b.dat" u ($1+p):($3)*factor1-h5  w l lw 3.5  lc  "brown" notitle "40T",\
+     "xas_tot_mcd_combine_20T_b.dat" u ($1+p):($3)*factor1-h4  w l lw 3.5  lc  4 notitle "20T",\
+     "xas_tot_mcd_combine_10T_b.dat" u ($1+p):($3)*factor1-h3  w l lw 3.5  lc  5 notitle "10T",\
+     "xas_tot_mcd_combine_5T_b.dat" u ($1+p):($3)*factor1-h2  w l lw 3.5  lc  "orange" notitle "5T",\
+     "xas_tot_mcd_combine_1T_b.dat" u ($1+p):($3)*factor1-h1  w l lw 3.5  lc  1 notitle "1T",\
+     "xas_tot_mcd_combine_0.3T_b.dat" u ($1+p):($3)*factor1  w l lw 3.5  lc  2 notitle "0.3T"
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.20, 0.17
+set border 13
+
+set format x "%2.0f"
+set format y ""
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set noytics
+
+unset label; unset xlabel; unset ylabel
+set xlabel 'Energy (eV)'     offset -7.0, 0.7 font 'Arial,24'
+
+plot "xas_tot_mcd_combine_40T_b.dat" u ($1+p):($3)*factor1-h5  w l lw 3.5  lc  "brown" notitle "40T",\
+     "xas_tot_mcd_combine_20T_b.dat" u ($1+p):($3)*factor1-h4  w l lw 3.5  lc  4 notitle "20T",\
+     "xas_tot_mcd_combine_10T_b.dat" u ($1+p):($3)*factor1-h3  w l lw 3.5  lc  5 notitle "10T",\
+     "xas_tot_mcd_combine_5T_b.dat" u ($1+p):($3)*factor1-h2  w l lw 3.5  lc  "orange" notitle "5T",\
+     "xas_tot_mcd_combine_1T_b.dat" u ($1+p):($3)*factor1-h1  w l lw 3.5  lc  1 notitle "1T",\
+     "xas_tot_mcd_combine_0.3T_b.dat" u ($1+p):($3)*factor1  w l lw 3.5  lc  2 notitle "0.3T"
+
+#---------------------------------
+# panel (b)
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.30, 0.17
+set border 7
+
+unset label; unset xlabel; unset ylabel
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+
+set format y ""
+
+plot "xas_tot_mcd_combine_40T_b.dat" u ($1+p):($6*cos(phi6)*a)*factor3-h5  w l lw 3.5  lc  "brown" notitle,\
+     "xas_tot_mcd_combine_20T_b.dat" u ($1+p):($6*cos(phi5)*a)*factor3-h4  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_b.dat" u ($1+p):($6*cos(phi4)*a)*factor3-h3  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_b.dat" u ($1+p):($6*cos(phi3)*a)*factor3-h2  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_b.dat" u ($1+p):($6*cos(phi2)*a)*factor3-h1  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_b.dat" u ($1+p):($6*cos(phi1)*a)*factor3  w l lw 3.5  lc  2 notitle
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.41, 0.17
+set border 13
+
+unset label; unset xlabel; unset ylabel
+set xlabel 'Energy (eV)'     offset -7.0, 0.7 font 'Arial,24'
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set noytics
+set format y ""
+
+plot "xas_tot_mcd_combine_40T_b.dat" u ($1+p):($6*cos(phi6)*a)*factor3-h5  w l lw 3.5  lc  "brown" notitle,\
+     "xas_tot_mcd_combine_20T_b.dat" u ($1+p):($6*cos(phi5)*a)*factor3-h4  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_b.dat" u ($1+p):($6*cos(phi4)*a)*factor3-h3  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_b.dat" u ($1+p):($6*cos(phi3)*a)*factor3-h2  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_b.dat" u ($1+p):($6*cos(phi2)*a)*factor3-h1  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_b.dat" u ($1+p):($6*cos(phi1)*a)*factor3  w l lw 3.5  lc  2 notitle
+
+#---------------------------------
+# panel (c)
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.51, 0.17
+set border 7
+
+unset label; unset xlabel; unset ylabel
+
+set format y ""
+
+set xrange[846.0:856.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+
+plot "xas_tot_mcd_combine_40T_b.dat" u ($1+p):(f6*($9*a-$12*a)/(m-n))*factor4-h5  w l lw 3.5  lc "brown" notitle,\
+     "xas_tot_mcd_combine_20T_b.dat" u ($1+p):(f5*($9*a-$12*a)/(m-n))*factor4-h4  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_b.dat" u ($1+p):(f4*($9*a-$12*a)/(m-n))*factor4-h3  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_b.dat" u ($1+p):(f3*($9*a-$12*a)/(m-n))*factor4-h2  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_b.dat" u ($1+p):(f2*($9*a-$12*a)/(m-n))*factor4-h1  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_b.dat" u ($1+p):(f1*($9*a-$12*a)/(m-n))*factor4  w l lw 3.5  lc  2 notitle
+#---------------------------------
+set size   0.10, 0.40
+set origin 0.62, 0.17
+set border 13
+
+unset label; unset xlabel; unset ylabel
+set xlabel 'Energy (eV)'     offset -7.0, 0.7 font 'Arial,24'
+
+set format y "%2.2f"
+
+set xrange[864.0:874.0]
+set xtics  5 offset 0.0,0.3 font 'Arial,24'
+set mxtics 5
+set format x "%2.0f"
+
+set yrange [-0.54:0.03]
+set ytics  0.10 offset 0.0,0.0 font 'Arial,24' nomirror
+set mytics 5
+set noytics
+
+plot "xas_tot_mcd_combine_40T_b.dat" u ($1+p):(f6*($9*a-$12*a)/(m-n))*factor4-h5  w l lw 3.5  lc "brown" notitle,\
+     "xas_tot_mcd_combine_20T_b.dat" u ($1+p):(f5*($9*a-$12*a)/(m-n))*factor4-h4  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_b.dat" u ($1+p):(f4*($9*a-$12*a)/(m-n))*factor4-h3  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_b.dat" u ($1+p):(f3*($9*a-$12*a)/(m-n))*factor4-h2  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_b.dat" u ($1+p):(f2*($9*a-$12*a)/(m-n))*factor4-h1  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_b.dat" u ($1+p):(f1*($9*a-$12*a)/(m-n))*factor4  w l lw 3.5  lc  2 notitle
+
+#--------------------------------------
+# panel (d)
+#--------------------------------------
+set size   0.12, 0.40
+set origin 0.80, 0.17
+set border
+set border linewidth 3.0
+
+unset label; unset xlabel; unset ylabel
+
+set xrange[848:855]
+set xtics  4 offset 0.0,0.5 font 'Arial,24'
+set mxtics 4
+set format x "%2.0f"
+
+set xlabel 'Energy (eV)'     offset 0.0, 0.7 font 'Arial,24'
+
+set yrange [-0.002:0.0035]
+set ytics  0.002 offset 0.5, 0.0 font 'Arial,24'
+set mytics 4
+set format y "%.0t×10^{%T}" # Y軸のティックラベルを10の累乗形式に設定
+
+#set ylabel 'diff.' offset 5.0,-0.0 font 'Arial,24'
+
+plot "xas_tot_mcd_combine_40T_b.dat" u ($1+p):(($6*a*cos(phi6)+f6*($9*a-$12*a)/(m-n))-($3))*r*factor5  w l lw 3.5  lc  "brown" notitle,\
+     "xas_tot_mcd_combine_20T_b.dat" u ($1+p):(($6*a*cos(phi5)+f5*($9*a-$12*a)/(m-n))-($3))*r*factor5  w l lw 3.5  lc  4 notitle,\
+     "xas_tot_mcd_combine_10T_b.dat" u ($1+p):(($6*a*cos(phi4)+f4*($9*a-$12*a)/(m-n))-($3))*r*factor5  w l lw 3.5  lc  5 notitle,\
+     "xas_tot_mcd_combine_5T_b.dat" u ($1+p):(($6*a*cos(phi3)+f3*($9*a-$12*a)/(m-n))-($3))*r*factor5  w l lw 3.5  lc  "orange" notitle,\
+     "xas_tot_mcd_combine_1T_b.dat" u ($1+p):(($6*a*cos(phi2)+f2*($9*a-$12*a)/(m-n))-($3))*r*factor5  w l lw 3.5  lc  1 notitle,\
+     "xas_tot_mcd_combine_0.3T_b.dat" u ($1+p):(($6*a*cos(phi1)+f1*($9*a-$12*a)/(m-n))-($3))*r*factor5  w l lw 3.5  lc  2 notitle
+
+#--------------------------------------
+unset multiplot
